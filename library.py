@@ -1,9 +1,10 @@
-import string
+import string #For ASCI Library
 import random
 
 class passgen():
     def __init__(self, passreq):
         #Determines Flags for Password Requirements Set By User
+        #[0] = Upper Case Characters, [1] = Lower Case Characters, [2] = Numbers, [3] = Symbols, [4] = #of characters
         self.includeUpper = passreq[0]
         self.includeLower = passreq[1]
         self.includeNums = passreq[2]
@@ -11,8 +12,8 @@ class passgen():
         self.numberofChar = passreq[4]
     
     def generate_password(self):
-        choiceArray = [1,2,3,4]
-        symbolchoice = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", ",", ".", "?"]
+        choiceArray = [1,2,3,4] #For Optimized Randomization
+        symbolchoice = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", ",", ".", "?"] #Symbols List
         password = ""
         randomLetter = random.choice(string.ascii_letters)
         while len(password) < self.numberofChar:
@@ -29,7 +30,7 @@ class passgen():
     def get_password(self):
         return self.password
 
-    def test_pass():
+    def test_pass(): #Test Function
         test = passgen([True,True,True,False, 10])
         passgen.generate_password(test)
         print(passgen.get_password(test))
